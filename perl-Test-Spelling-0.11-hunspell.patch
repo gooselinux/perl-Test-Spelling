@@ -1,0 +1,48 @@
+diff -up Test-Spelling-0.11/lib/Test/Spelling.pm.BAD Test-Spelling-0.11/lib/Test/Spelling.pm
+--- Test-Spelling-0.11/lib/Test/Spelling.pm.BAD	2010-01-20 19:35:34.771928737 -0500
++++ Test-Spelling-0.11/lib/Test/Spelling.pm	2010-01-20 19:37:45.806790957 -0500
+@@ -12,7 +12,7 @@ use Carp;
+ our $VERSION = '0.11';
+ 
+ my $Test        = Test::Builder->new;
+-my $Spell_cmd   = 'spell';
++my $Spell_cmd   = 'hunspell -l';
+ my $Spell_temp  = File::Temp->new->filename;
+ 
+ sub import {
+@@ -155,7 +155,7 @@ Test::Spelling - check for spelling erro
+ 
+ C<Test::Spelling> lets you check the spelling of a POD file, and report
+ its results in standard C<Test::Simple> fashion. This module requires the
+-F<spell> program.
++F<hunspell> program.
+ 
+     use Test::More;
+     use Test::Spelling;
+@@ -172,7 +172,7 @@ module distribution:
+ 
+ Note, however that it is not really recommended to include this test with a
+ CPAN distribution, or a package that will run in an uncontrolled environment,
+-because there's no way of predicting if F<spell> will be available or the
++because there's no way of predicting if F<hunspell> will be available or the
+ word list used will give the same results (what if it's in a different language,
+ for example?). You can have the test, but don't add it to F<MANIFEST> (or add
+ it to F<MANIFEST.SKIP> to make sure you don't add it by accident). Anyway,
+@@ -189,7 +189,7 @@ ways to add per-file stopwords to each .
+ 
+ =head1 DESCRIPTION
+ 
+-Check POD files for spelling mistakes, using L<Pod::Spell> and F<spell> to do
++Check POD files for spelling mistakes, using L<Pod::Spell> and F<hunspell> to do
+ the heavy lifting.
+ 
+ =head1 FUNCTIONS
+@@ -278,7 +278,7 @@ in verbatim blocks and code labeled with
+ 
+ =head2 set_spell_cmd($command)
+ 
+-If the F<spell> program has a different name or is not in your path, you can
++If the F<hunspell> program has a different name or is not in your path, you can
+ specify an alternative with C<set_spell_cmd>. Any command that takes text
+ from standard input and prints a list of misspelled words, one per line, to
+ standard output will do. For example, you can use C<aspell -l>.
